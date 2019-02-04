@@ -1,6 +1,7 @@
 #include<stdio.h>
 int main()
 {
+	//gyhjkk
 	int num,r;
 	long int bin=0,i=1;
 	printf("enter digit");
