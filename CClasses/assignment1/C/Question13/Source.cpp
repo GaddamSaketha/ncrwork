@@ -28,8 +28,6 @@ int main()
 long int invertponwards(long int n, int p, int b)
 {
 	int i = 0;
-	for (i = 0; i < c; i++)
-	{
-		if(i>=p-1)
-	}
+	long int n1 = 0, n2 = 0, n3 = 0;
+	n3=n%(pow(10,))
 }
