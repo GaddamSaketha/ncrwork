@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C0E38E79-6692-4682-A77E-2F79193DDEFC}</ProjectGuid>
+    <ProjectGuid>{A04C8511-E472-445A-A52A-3F1A69FC9F54}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>C</RootNamespace>
+    <RootNamespace>Question13</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -142,11 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Add.cpp" />
-    <ClCompile Include="calci.cpp" />
-    <ClCompile Include="Div.cpp" />
-    <ClCompile Include="Mul.cpp" />
-    <ClCompile Include="Sub.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,4 +1,6 @@
-extern int div(int a, int b)
+float div(int a, int b)
 {
-	return (a / b);
+	extern float res2;
+	res2 = ((float)a) / b;
+	return res2;
 }

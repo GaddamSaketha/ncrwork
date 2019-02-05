@@ -1,4 +1,6 @@
-extern int sub(int a, int b)
+ int sub(int a, int b)
 {
-	return (a - b);
+	 extern int res;
+	 res = a - b;
+	return res;
 }
