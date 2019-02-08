@@ -87,11 +87,11 @@ void hextobin()
 		{
 			int p = 0, q = 0;
 			n= hex[i] - 48;
-			printf("%d\n", n);
+			
 			while (n != 0)
 			{
 				r = n % 2;
-				printf("%d--%d\n", r, h);
+				
 				bin[h--] = r;
 				
 				n = n / 2;
@@ -103,12 +103,12 @@ void hextobin()
 		{
 			int p = 0, q = 0;
 			n = hex[i] - 55;
-			printf("%d\n", n);
+			
 			
 			while (n != 0)
 			{
 				r = n % 2;
-				printf("%d--%d\n", r, h);
+				
 				bin[h--] = r;
 				
 				n = n / 2;
@@ -119,11 +119,11 @@ void hextobin()
 		{
 			int p = 0, q = 0;
 			n = hex[i] - 87;
-			printf("%d\n", n);
+			
 			while (n != 0)
 			{
 				r = n % 2;
-				printf("%d--%d\n", r, h);
+				
 				bin[h--] = r;
 				
 				n = n / 2;
@@ -132,6 +132,6 @@ void hextobin()
 		}
 		i++;
 	}
-	/*for (i = 0; i < l; i++)
-		printf("%d", bin[i]);*/
+	for (i = 0; i < l; i++)
+		printf("%d", bin[i]);
 }
