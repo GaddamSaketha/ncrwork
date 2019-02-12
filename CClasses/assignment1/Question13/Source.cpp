@@ -1,33 +1,41 @@
 #include<stdio.h>
-long int invertponwards(long int n, int p, int b);
-int c = 0;
+int invertponwards(int number, int position, int bits)
+{
+	int r = 0;
+	int bin[64] = { 0 }, i = 0;
+	while (number > 0)
+	{
+		bin[i] = number % 2;
+		number >>= 1;
+		i++;
+	}
+	i--;
+	int k = i - position;
+	for (int temp = 0; temp < bits; temp++, k--)
+	{
+		bin[k] = ((bin[k] == 1) ? 0 : 1);
+	}
+	int j = 0;
+	while (i >= 0)
+	{
+		r = r * 2 + bin[i];
+		j++; i--;
+	}
+	return r;
+}
 int main()
 {
-	int num,r,p,b;
-	long int bin,res;
-	int i = 1;
-	printf("enter num");
-	scanf("%d",&num);
-	printf("enter pos");
-	scanf("%d",&p);
-	printf("enter bits count");
+	int n;
+	printf("Enter any number\n");
+	scanf("%d", &n);
+	int p, b;
+	printf("Enter the position to invert\n");
+	scanf("%d", &p);
+	printf("Enter the number of bits to invert\n");
 	scanf("%d", &b);
-
-	while (num != 0)
-	{
-		c++;
-		r = num % 2;
-		num = num / 2;
-		bin = bin + (i*r);
-		i = i * 10;
-	}
-	res = invertponwards(bin, p, b);
-
+	int res = invertponwards(n, p - 1, b);
+	printf("%d\n", res);
+	
+	
 	return 0;
-}
-long int invertponwards(long int n, int p, int b)
-{
-	int i = 0;
-	long int n1 = 0, n2 = 0, n3 = 0;
-	n3=n%(pow(10,))
 }
