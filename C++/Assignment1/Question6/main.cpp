@@ -7,7 +7,7 @@ class point
 {
 	int x;
 	int y;
-	float d;
+	
 public:
 	point()
 	{
@@ -24,27 +24,22 @@ public:
 		x = val1;
 		y = val2;
 	}
-	void display()
-	{
-		cout << "the distance between two points is: " << d << endl;
-	}
-	friend point calculate_distance(point &p1, point &p2);
+
+	friend float calculate_distance(point &p1, point &p2);
 
 };
-point calculate_distance(point &p1, point &p2)
+float calculate_distance(point &p1, point &p2)
 {
-	point temp;
+	float d;
 	int a = p1.x - p2.x;
-	a = a*a;
 	int b = p1.y - p2.y;
-	b = b*b;
-	temp.d = sqrt(a + b);
-	return temp;
+	d = sqrt(a*a + b*b);
+	return d;
 }
 int main()
 {
-	point p1(5), p2(3, 7), p3;
-	p3 = calculate_distance(p1, p2);
-	p3.display();
+	point p1(5), p2(3, 7);
+	float d= calculate_distance(p1, p2);
+	cout << "the distance between two points is: " << d << endl;
 	return 0;
 }
