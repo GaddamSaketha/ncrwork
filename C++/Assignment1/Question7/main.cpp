@@ -35,4 +35,13 @@ public:
 			ptr[i] = new int[n];
 		}
 	}
+	void matrix_initialize()
+	{
+		cout << "enter matrix values" << endl;
+		for(int i=0;i<rows;i++)
+			for (int j = 0; j <cols; j++)
+			{
+				cin >> *(*(ptr+i)+j);
+			}
+	}
 };
