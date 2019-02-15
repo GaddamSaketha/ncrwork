@@ -1,0 +1,68 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<iostream>
+#include<string.h>
+using namespace std;
+class strings
+{
+	char* sptr;
+	int len;
+public:
+	strings()
+	{
+		sptr = NULL;
+		len = 0;
+	}
+	strings(const char* s)
+	{
+		len = strlen(s);
+		sptr = (char*)malloc(sizeof(char)*(len + 1));
+		strcpy(sptr, s);
+	}
+	strings(const strings &temp)
+	{
+		len = temp.len;
+		sptr = (char*)malloc(sizeof(char)*(len + 1));
+		strcpy(sptr, temp.sptr);
+	}
+	~strings()
+	{
+		if (sptr != NULL)
+			free(sptr);
+	}
+	char& operator[](int n)
+	{
+		return sptr[n];
+	}
+	strings* operator->()
+	{
+		return this;
+	}
+	strings operator=(strings temp)
+	{
+		len = temp.len;
+		if (sptr != NULL)
+			free(sptr);
+		sptr = (char*)malloc(sizeof(char)*(len + 1));
+		strcpy(sptr, temp.sptr);
+		return(*this);
+	}
+	friend ostream& operator<<(ostream& cout, strings s);
+	friend istream& operator>>(istream& cin, strings &s);
+};
+ostream& operator<<(ostream& cout, strings s)
+{
+	cout <<s.sptr;
+
+	return cout;
+}
+istream& operator>>(istream& cin, strings &s)
+{
+	cin >> s.sptr;
+	return cin;
+}
+
+int main()
+{
+
+	return 0;
+}
