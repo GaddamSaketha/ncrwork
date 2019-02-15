@@ -46,6 +46,27 @@ public:
 		strcpy(sptr, temp.sptr);
 		return(*this);
 	}
+	strings operator+(strings s)
+	{
+		strings temp;
+		temp.len = len + s.len;
+		temp.sptr = (char*)realloc(sptr, (len + 1));
+		int i = 0,j=0;
+		while (*(sptr + i) != '\0')
+		{
+			*(temp.sptr + i) = *(sptr + i);
+			i++;
+		}
+		while (*(sptr + j) != '\0')
+		{
+			*(temp.sptr + i) = *(sptr + j);
+			j++;
+			i++;
+		}
+		*(temp.sptr + i) = '\0';
+		return temp;
+
+	}
 	friend ostream& operator<<(ostream& cout, strings s);
 	friend istream& operator>>(istream& cin, strings &s);
 };
@@ -63,6 +84,9 @@ istream& operator>>(istream& cin, strings &s)
 
 int main()
 {
+	strings s1("hello"), s2(s1), s3;
+	s3 = s1+s2;
+	cout << s3;
 
 	return 0;
 }
