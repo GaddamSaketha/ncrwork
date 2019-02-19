@@ -51,7 +51,7 @@ public:
 		strings temp;
 		temp.len = len + s.len;
 		temp.sptr = (char*)realloc(sptr, (len + 1));
-		int i = 0,j=0;
+		int i = 0, j = 0;
 		while (*(sptr + i) != '\0')
 		{
 			*(temp.sptr + i) = *(sptr + i);
@@ -72,7 +72,7 @@ public:
 };
 ostream& operator<<(ostream& cout, strings s)
 {
-	cout <<s.sptr;
+	cout << s.sptr;
 
 	return cout;
 }
@@ -85,7 +85,7 @@ istream& operator>>(istream& cin, strings &s)
 int main()
 {
 	strings s1("hello"), s2(s1), s3;
-	s3 = s1+s2;
+	s3 = s1 + s2;
 	cout << s3;
 
 	return 0;

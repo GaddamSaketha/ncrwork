@@ -14,13 +14,13 @@ public:
 		radius = 0;
 		count++;
 	}
-	polar( int x,int y)
+	polar(int x, int y)
 	{
 		angle = x;
 		radius = y;
 		count++;
 	}
-	polar(const polar &p )
+	polar(const polar &p)
 	{
 		angle = p.angle;
 		radius = p.radius;

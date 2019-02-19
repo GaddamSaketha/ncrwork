@@ -96,7 +96,8 @@ int main()
 	cout << "-c4 is: ";
 	cout << c7 << endl;
 	cout << "inc of c2 is: ";
-	cout << ++c2 << endl;
+	++c2;
+	cout << c2 << endl;
 	c5 = c3++;
 	cout << c5 << endl;
 	cout << c3 << endl;
