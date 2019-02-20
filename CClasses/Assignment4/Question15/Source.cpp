@@ -21,10 +21,8 @@ int main()
 	{
 	case 1 :printf("enter string");
 		scanf("%s", c);
-		l = strlen(c);
-		s = (char*)malloc((l + 1) * sizeof(char));
-		s = strrev1(c);
-		printf("%s", s);
+	    strrev1(c);
+		printf("%s", c);
 		break;
 	case 2 :printf("enter string");
 		scanf("%s", c);
@@ -56,7 +54,7 @@ char *strrev1(char *str)
 	char temp;
 	char* p1 = str;
 	char* p2 = str;
-	for (p1 = str, p2 = (str + (strlen(str) - 1)); p1 < p2; p1++, p2++)
+	for (p1 = str, p2 = (str + (strlen(str) - 1)); p1 < p2; p1++, p2--)
 	{
 		temp = *p1;
 		*p1 = *p2;
@@ -66,7 +64,9 @@ char *strrev1(char *str)
 }
 char* strcpy1(char* d, char* s)
 {
-	while ((*d++=*s++) != '\0');
+	int i = 0;
+	while ((d[i] = s[i]) != '\0')
+		i++;
 	return d;
 }
 char *strcat1(char *d,  char *s)
