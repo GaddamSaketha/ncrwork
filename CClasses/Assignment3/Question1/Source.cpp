@@ -28,7 +28,7 @@ void Sum(int a[], int n, int sum)
 
 	if (i < n)
 		csum = csum + a[i];
-}
+   }
 
 
 printf("0");

@@ -4,8 +4,10 @@ void fun(int a[], int n);
 void fun(int a[], int n)
 {
 	int j = 0, i;
-	for (i = 0; i < n; i++) {
-		if (a[i] < 0) {
+	for (i = 0; i < n; i++) 
+	{
+		if (a[i] < 0) 
+		{
 			if (i != j)
 			{
 				int temp = a[i];
