@@ -43,3 +43,25 @@ void list::insert_last(int ele)//curr points to current node
 		curr->next = temp;
 	}
 }
+void list::insert_after(int key,int ele)
+{
+	if (start != NULL)
+	{
+		struct node* curr;
+		curr = start;
+		while (curr != NULL && curr->data != key)
+			curr = curr->next;
+		if (curr != NULL)
+		{
+			struct node* temp;
+			temp = new node;
+			temp->data = ele;
+			temp->next = curr->next;
+			curr->next = temp;
+		}
+		else
+			cout << "ele not found";
+	}
+	else
+		cout << "list doesnt exist";
+}
