@@ -33,7 +33,10 @@ int main()
 	PSTR RES_ARR1 = (PSTR)malloc(sizeof(CHAR)*res);
 	WideCharToMultiByte(CP_UTF8, 0, ARR1, wcslen(ARR1)+1, RES_ARR1, strlen(RES_ARR1), NULL, NULL);
 	printf("%s \n", RES_ARR1);
-
+	TCHAR char1 = TEXT(C);
+	TCHAR char2 = TEXT(C1);
+	printf("size of char1: %d\n", sizeof(char1));
+	printf("size of char2: %d\n", sizeof(char2));
 	
 	return 0;
 }
