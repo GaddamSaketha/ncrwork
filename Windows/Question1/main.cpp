@@ -23,7 +23,7 @@ int main()
 	printf("is ARR an unicode: %d\n", IsTextUnicode(ARR, strlen(ARR)+1, NULL));
 	printf("is ARR1 an unicode: %d\n", IsTextUnicode(ARR1, wcslen(ARR1)+1, NULL));
 	int res = MultiByteToWideChar(CP_UTF8,0,ARR, strlen(ARR),NULL,0);
-	if (res == 0)
+	if (0==res)
 	{
 		printf("Error is: %d",GetLastError());
 		return -1;
@@ -34,7 +34,7 @@ int main()
 	printf("%S ", RES_ARR);
 	printf("\n");
 	res = WideCharToMultiByte(CP_UTF8, 0, ARR1, wcslen(ARR1), NULL, 0,NULL,NULL);
-	if (res == 0)
+	if (0==res )
 	{
 		printf("Error is: %d", GetLastError());
 		return -1;
@@ -46,6 +46,9 @@ int main()
 	//TCHAR char2 = TEXT(C1);
 	//printf("size of char1: %d\n", sizeof(char1));
 	//printf("size of char2: %d\n", sizeof(char2));
-	
+	/*free(ARR);
+	free(ARR1);
+	free(RES_ARR);
+	free(RES_ARR1);*/
 	return 0;
 }
