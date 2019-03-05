@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<windows.h>
 #include<tchar.h>
-DWORD WINAPI  Function_Threadb(LPVOID lpParameter)
+DWORD WINAPI  Function_Thread(LPVOID lpParameter)
 {
 	_tprintf(_T("In thread function\n"));
 	printf("hello hii\n");
@@ -22,7 +22,7 @@ int main(int argc, TCHAR *argv[])
 	printf("enter time interval 1. infinite 2.1000");
 
 	scanf("%d", &choice);
-	hThread_handle = CreateThread(NULL, 0, Function_Threadb, NULL, 0, &dwThread_Id);
+	hThread_handle = CreateThread(NULL, 0, Function_Thread, NULL, 0, &dwThread_Id);
 	if (NULL == hThread_handle)
 	{
 		printf("error in creating thread: error(%d)\n", GetLastError());
