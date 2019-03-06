@@ -33,6 +33,7 @@ int _tmain(int argc, LPTSTR argv[])
 			_tprintf(_T("File(%s) written successfully\n "), argv[1]);
 		}
 	}
+
 	CloseHandle(hfile);
 	return 0;
 }
