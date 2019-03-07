@@ -191,7 +191,6 @@ int main()
 	cin >> input_string;
 	char result_string[100];
 	char_stack stack1(100);
-	//int curr = 0;
 	char current_char;
 	int res_index = 0;
 	for (int i = 0; i < strlen(input_string); i++)
