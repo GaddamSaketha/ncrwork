@@ -1,11 +1,11 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
+using namespace std;
 double result = 0;
 double Add(double a, double b);
 double Mul(double a, double b);
 double Sub(double a, double b);
 double Div(double a, double b);
-using namespace std;
 class char_stack
 {
 	struct sta
@@ -193,10 +193,16 @@ int main()
 	char_stack stack1(100);
 	char current_char;
 	int res_index = 0;
+	double f;
 	for (int i = 0; i < strlen(input_string); i++)
 	{
 		current_char = input_string[i];
-		if (isdigit(current_char) || isalpha(current_char))
+		if (isalpha(current_char))
+		{
+			cout << "wrong input";
+			return -1;
+		}	
+		else if (isdigit(current_char))
 		{
 			result_string[res_index++] = current_char;
 		}
@@ -250,11 +256,6 @@ int main()
 		{
 			double num1 = stack2.Pop();
 			double num2 = stack2.Pop();
-			if (!isdigit(num1) || !isdigit(num2))
-			{
-				cout << "wrong input";
-				return -1;
-			}
 			switch (ch)
 			{
 			case '+': stack2.Push(Add(num1, num2));
@@ -263,14 +264,16 @@ int main()
 				break;
 			case '*': stack2.Push(Mul(num1, num2));
 				break;
-			case '/': double f = Div(num2, num1);
+			case '/': f = Div(num2, num1);
 				if (f == -999)
 				{
-					cout << "invalid operation";
+					cout << "invalid operation"<<endl;
 					return -1;
 				}
 				else
 					stack2.Push(Div(num2, num1));
+				break;
+			default: cout << "wrong input" << endl;
 				break;
 			}
 		}
