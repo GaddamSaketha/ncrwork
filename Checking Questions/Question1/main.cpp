@@ -102,20 +102,20 @@ class double_stack
 	struct sta
 	{
 		int top;
-		double *elements;
+		double *elem;
 		int length;
 	}stack;
 public:
 	double_stack()
 	{
 		stack.length = 0;
-		stack.elements = NULL;
+		stack.elem = NULL;
 		stack.top = -1;
 	}
 	double_stack(int size)
 	{
 		stack.length = size;
-		stack.elements = new double[size];
+		stack.elem = new double[size];
 		stack.top = -1;
 	}
 	bool isEmpty()
@@ -141,7 +141,7 @@ public:
 		}
 		else
 		{
-			stack.elements[++stack.top] = x;
+			stack.elem[++stack.top] = x;
 		}
 	}
 	double Pop()
@@ -154,7 +154,7 @@ public:
 		}
 		else
 		{
-			x = stack.elements[stack.top--];
+			x = stack.elem[stack.top--];
 			return x;
 		}
 	}
@@ -168,7 +168,7 @@ public:
 		}
 		else
 		{
-			x = stack.elements[stack.top];
+			x = stack.elem[stack.top];
 			return x;
 		}
 	}
@@ -176,12 +176,12 @@ public:
 	{
 		for (int i = 0; i <= stack.top; i++)
 		{
-			cout << stack.elements[i] << endl;
+			cout << stack.elem[i] << endl;
 		}
 	}
 	~double_stack()
 	{
-		delete (stack.elements);
+		delete (stack.elem);
 	}
 };
 int main()
