@@ -1,28 +1,30 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
-#define SIZE 100
-int result = 0;
-int Add(int a, int b);
-int Mul(int a, int b);
-int Sub(int a, int b);
-float Div(int a, int b);
+double result = 0;
+double Add(double a, double b);
+double Mul(double a, double b);
+double Sub(double a, double b);
+double Div(double a, double b);
 using namespace std;
-class _Stack_
+class char_stack
 {
 	struct sta
 	{
 		int top;
-		char *elements;
-		int size;
+		char *elem;
+		int length;
 	}stack;
 public:
-	_Stack_()
+	char_stack()
 	{
+		stack.length = 0;
+		stack.elem = NULL;
+		stack.top = -1;
 	}
-	_Stack_(int size)
+	char_stack(int size)
 	{
-		stack.size = size;
-		stack.elements = new char[size];
+		stack.length = size;
+		stack.elem = new char[size];
 		stack.top = -1;
 	}
 	bool isEmpty()
@@ -33,7 +35,7 @@ public:
 	}
 	bool isFull()
 	{
-		if (stack.top == stack.size - 1)
+		if (stack.top == stack.length - 1)
 		{
 			return true;
 		}
@@ -41,14 +43,14 @@ public:
 	}
 	void Push(char ele)
 	{
-		if (stack.top == stack.size - 1)
+		if (stack.top == stack.length - 1)
 		{
 			cout << "Stack Full";
 			return;
 		}
 		else
 		{
-			stack.elements[++stack.top] = ele;
+			stack.elem[++stack.top] = ele;
 		}
 	}
 	char Pop()
@@ -58,7 +60,7 @@ public:
 		{
 			return x;
 		}
-		x = stack.elements[stack.top--];
+		x = stack.elem[stack.top--];
 		return x;
 	}
 	char Peek()
@@ -70,7 +72,7 @@ public:
 		}
 		else
 		{
-			x = stack.elements[stack.top];
+			x = stack.elem[stack.top];
 			return x;
 		}
 	}
@@ -78,12 +80,12 @@ public:
 	{
 		for (int i = 0; i <= stack.top; i++)
 		{
-			cout << stack.elements[i];
+			cout << stack.elem[i];
 		}
 	}
-	~_Stack_()
+	~char_stack()
 	{
-		delete (stack.elements);
+		delete (stack.elem);
 	}
 };
 int Precedence(char x)
@@ -95,22 +97,25 @@ int Precedence(char x)
 	else
 		return 1;
 }
-class _StackInt_
+class double_stack
 {
 	struct sta
 	{
 		int top;
-		int *elements;
-		int size;
+		double *elements;
+		int length;
 	}stack;
 public:
-	_StackInt_()
+	double_stack()
 	{
+		stack.length = 0;
+		stack.elements = NULL;
+		stack.top = -1;
 	}
-	_StackInt_(int size)
+	double_stack(int size)
 	{
-		stack.size = size;
-		stack.elements = new int[size];
+		stack.length = size;
+		stack.elements = new double[size];
 		stack.top = -1;
 	}
 	bool isEmpty()
@@ -121,15 +126,15 @@ public:
 	}
 	bool isFull()
 	{
-		if (stack.top == stack.size - 1)
+		if (stack.top == stack.length - 1)
 		{
 			return true;
 		}
 		return false;
 	}
-	void Push(int x)
+	void Push(double x)
 	{
-		if (stack.top == stack.size - 1)
+		if (stack.top == stack.length - 1)
 		{
 			cout << "Stack Full";
 			return;
@@ -139,9 +144,9 @@ public:
 			stack.elements[++stack.top] = x;
 		}
 	}
-	int Pop()
+	double Pop()
 	{
-		int x = -999;
+		double x = -999;
 		if (stack.top == -1)
 		{
 			cout << "Stack Empty";
@@ -153,9 +158,9 @@ public:
 			return x;
 		}
 	}
-	int Peek()
+	double Peek()
 	{
-		int x = -999;
+		double x = -999;
 		if (stack.top == -1)
 		{
 			cout << "Stack Empty";
@@ -174,66 +179,66 @@ public:
 			cout << stack.elements[i] << endl;
 		}
 	}
-	~_StackInt_()
+	~double_stack()
 	{
 		delete (stack.elements);
 	}
 };
 int main()
 {
-	char input_string[SIZE];
+	char input_string[100];
 	cout << "Enter the string";
 	cin >> input_string;
-	char result_string[SIZE];
-	_Stack_ stack1(10);
-	int curr = 0;
-	char ch;
-	int k = 0;
+	char result_string[100];
+	char_stack stack1(100);
+	//int curr = 0;
+	char current_char;
+	int res_index = 0;
 	for (int i = 0; i < strlen(input_string); i++)
 	{
-		ch = input_string[i];
-		if (isdigit(ch) || isalpha(ch))
+		current_char = input_string[i];
+		if (isdigit(current_char) || isalpha(current_char))
 		{
-			result_string[k++] = ch;
+			result_string[res_index++] = current_char;
 		}
-		else if (ch == '(')
+		else if (current_char == '(')
 		{
-			stack1.Push(ch);
+			stack1.Push(current_char);
 		}
-		else if (ch == ')')
+		else if (current_char == ')')
 		{
 			while (stack1.Peek() != '(')
 			{
-				result_string[k++] = stack1.Pop();
+				result_string[res_index++] = stack1.Pop();
 			}
 			stack1.Pop();
 		}
 		else if (stack1.isEmpty())
 		{
-			stack1.Push(ch);
+			stack1.Push(current_char);
 		}
-		else if (Precedence(ch) > Precedence(stack1.Peek()))
+		else if (Precedence(current_char) > Precedence(stack1.Peek()))
 		{
-			stack1.Push(ch);
+			stack1.Push(current_char);
 		}
 		else
 		{
-			while (Precedence(ch) <= Precedence(stack1.Peek()))
+			while (Precedence(current_char) <= Precedence(stack1.Peek()))
 			{
 				
-				result_string[k++] = stack1.Pop();
+				result_string[res_index++] = stack1.Pop();
 			}
 
-			stack1.Push(ch);
+			stack1.Push(current_char);
 		}
 	}
 	while (!stack1.isEmpty())
 	{
-		result_string[k++] = stack1.Pop();
+		result_string[res_index++] = stack1.Pop();
 	}
-	result_string[k] = '\0';
+	result_string[res_index] = '\0';
 	cout << "Result String is: " << result_string << endl;
-	_StackInt_ stack2(10);
+	double_stack stack2(100);
 	for (int i = 0; i < strlen(result_string); i++)
 	{
 		char ch;
@@ -244,17 +249,29 @@ int main()
 		}
 		else
 		{
-			int a = stack2.Pop();
-			int b = stack2.Pop();
+			double num1 = stack2.Pop();
+			double num2 = stack2.Pop();
+			if (!isdigit(num1) || !isdigit(num2))
+			{
+				cout << "wrong input";
+				return -1;
+			}
 			switch (ch)
 			{
-			case '+': stack2.Push(Add(a, b));
+			case '+': stack2.Push(Add(num1, num2));
 				break;
-			case '-': stack2.Push(Sub(b, a));
+			case '-': stack2.Push(Sub(num2, num1));
 				break;
-			case '*': stack2.Push(Mul(a, b));
+			case '*': stack2.Push(Mul(num1, num2));
 				break;
-			case '/': stack2.Push(Div(b, a));
+			case '/': double f = Div(num2, num1);
+				if (f == -999)
+				{
+					cout << "invalid operation";
+					return -1;
+				}
+				else
+					stack2.Push(Div(num2, num1));
 				break;
 			}
 		}

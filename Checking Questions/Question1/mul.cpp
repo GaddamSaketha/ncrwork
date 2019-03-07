@@ -1,3 +1,3 @@
-int Mul(int op1, int op2) {
-	return (op1*op2);
+double Mul(double operand1, double operand2) {
+	return (operand1*operand2);
 }

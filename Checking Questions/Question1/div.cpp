@@ -1,10 +1,10 @@
-extern int result;
-float Div(int op1, int op2)
+extern double result;
+double Div(double operand1, double oprand2)
 {
-	if (op2 != 0)
+	if (oprand2 != 0)
 	{
-		result = (float)op1 / op2;
+		result = (double)operand1 / oprand2;
 		return result;
 	}
-	return -1;
+	return -999;
 }

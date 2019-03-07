@@ -1,3 +1,3 @@
-int Sub(int op1, int op2) {
-	return(op1 - op2);
+double Sub(double operand1, double operand2) {
+	return(operand1 - operand2);
 }
