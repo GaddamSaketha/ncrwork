@@ -201,7 +201,7 @@ int main()
 		{
 			cout << "wrong input";
 			return -1;
-		}	
+		}
 		else if (isdigit(current_char))
 		{
 			result_string[res_index++] = current_char;
@@ -230,7 +230,7 @@ int main()
 		{
 			while (Precedence(current_char) <= Precedence(stack1.Peek()))
 			{
-				
+
 				result_string[res_index++] = stack1.Pop();
 			}
 
@@ -267,7 +267,7 @@ int main()
 			case '/': f = Div(num2, num1);
 				if (f == -1)
 				{
-					cout << "invalid operation"<<endl;
+					cout << "invalid operation" << endl;
 					return -1;
 				}
 				else

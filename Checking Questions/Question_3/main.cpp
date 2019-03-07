@@ -41,7 +41,7 @@ int main()
 		scanf("%s", input_string1);
 		printf("enter string2");
 		scanf("%s", input_string2);
-		return_value = strcmp1( input_string1, input_string2);
+		return_value = strcmp1(input_string1, input_string2);
 		printf("%d", return_value); break;
 	default: printf("enter valid no"); break;
 	}
