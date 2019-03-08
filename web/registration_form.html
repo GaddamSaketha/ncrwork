@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+
+/* Full-width input fields */
+input[type=text], input[type=file], input[type=date],input[type=number]{
+  width: 30%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  opacity: 0.7;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn
+{
+  float: left;
+  width: 30%;
+}
+.signupbtn {
+  float: left;
+  width: 30%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding:50px;
+}
+
+
+</style>
+<body>
+
+
+
+<script type="text/javascript">
+
+    function _setAge() {
+       var today = new Date()
+       givenDate = new Date(today);
+        var dt1 = document.getElementById('date').value;
+        var birthDate = new Date(dt1);
+        var years = (givenDate.getFullYear() - birthDate.getFullYear());
+
+        if (givenDate.getMonth() < birthDate.getMonth() ||
+     givenDate.getMonth() == birthDate.getMonth() && givenDate.getDate() < birthDate.getDate()) {
+            years--;
+        }
+
+       document.getElementById('age').value=years;
+
+    }
+
+
+    </script>
+
+
+
+
+
+<form action="/action_page.php" style="border:1px solid #ccc">
+  <div class="container">
+    <h1>Registration Form</h1>
+   
+<hr>
+    <label><b>NAME</b></label>
+    <input type="text" placeholder="Enter Name" name="name" required><br>
+    <label><b>SELECT PHOTO TO UPLOAD</b></label>
+    <input type="file" name="photo" id="photoToUpload"required><BR>
+    <label><b>DATE OF BIRTH</b></label>
+    <input type="date" name="bdayrequired" id="date" oninput="_setAge()"required><BR>
+    <label><b>AGE</b></label>
+    <input type="number" name="age" id="age"><BR>
+    <label ><b>HIGHEST EDUCATION QUALIFICATION</b></label><br>
+    <input type="radio" name="education" value="tenth" checked> Tenth<br>
+    <input type="radio" name="education" value="inter"> Intermediate<br>
+    <input type="radio" name="education" value="grad"> Graduation<br>
+    <input type="radio" name="education" value="postgrad"> Post Graduation
+    
+    <div class="clearfix">   
+    <button type="button" class="cancelbtn">Cancel</button>    
+    <button type="button" class="signupbtn" >Sign Up</button>
+     
+    </div>
+    <br><br>
+  </div>
+</form>
+
+</body>
+</html>

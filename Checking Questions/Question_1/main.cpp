@@ -197,6 +197,7 @@ int main()
 	for (int i = 0; i < strlen(input_string); i++)
 	{
 		current_char = input_string[i];
+
 		if (isalpha(current_char))
 		{
 			cout << "wrong input";
@@ -204,7 +205,14 @@ int main()
 		}
 		else if (isdigit(current_char))
 		{
-			result_string[res_index++] = current_char;
+			while (isdigit(current_char))
+			{
+				result_string[res_index++] = current_char;
+				i++;
+				current_char = input_string[i];
+			}
+			result_string[res_index++] = '@';
+			i--;
 		}
 		else if (current_char == '(')
 		{
@@ -250,7 +258,15 @@ int main()
 		ch = result_string[i];
 		if (isdigit(ch) && !stack2.isFull())
 		{
-			stack2.Push(ch - '0');
+			double num=0;
+			while (ch!='@')
+			{
+				num = num * 10 + ch - '0';
+				i++;
+				ch = result_string[i];
+			}
+			stack2.Push(num);
+		
 		}
 		else
 		{

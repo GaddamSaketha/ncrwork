@@ -23,12 +23,12 @@ int main()
 		strrev1(input_string1);
 		printf("%s", input_string1);
 		break;
-	case 2:printf("enter string");
+	case 2: printf("enter string1");
 		scanf("%s", input_string1);
-		length = strlen(input_string1);
-		output_string = (char*)malloc((length + 1) * sizeof(char));
-		output_string = strcpy1(output_string, input_string1);
-		printf("%s", output_string);
+		printf("enter string2");
+		scanf("%s", input_string2);
+		output_string = strcpy1(input_string2, input_string1);
+		printf("%s", input_string2);
 		break;
 	case 3: printf("enter string1");
 		scanf("%s", input_string1);
@@ -63,9 +63,16 @@ char *strrev1(char *str)
 }
 char* strcpy1(char* destination, char* source)
 {
+	/*destination = (char*)realloc(destination, strlen(destination) + 1);
+	source = (char*)realloc(source, strlen(source) + 1);*/
 	int i = 0;
 	while ((destination[i] = source[i]) != '\0')
+	{
+		/*if (destination[i++] == '\0')
+			break;*/
 		i++;
+	}
+		
 	return destination;
 }
 char *strcat1(char *destination, char *source)
