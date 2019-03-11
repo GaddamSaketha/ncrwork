@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Performance Test</title>
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        var perf = performance.timing;
+
+        // Date / Time the page was requested
+        var navStart = perf.navigationStart;
+
+
+        // Loading the response
+        var reqStart = perf.requestStart - navStart;
+        var loadStart = perf.responseStart - navStart;
+       
+        document.write("LOADING RESPONSE = " + reqStart + "-" + loadStart + "ms<br>");
+    </script>
+</body>
+</html>

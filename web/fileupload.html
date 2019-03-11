@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html>
+<head>
+<script>
+function file_size()
+{
+var fi = document.getElementById('fileInput');
+alert("the file size is: "+fi.files[0].size); 
+}
+</script>
+</head>
 <body>
 
-<form action="upload.php" method="post" ">
-    Select file to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload File" name="submit">
+<h1>File upload</h1>
+
+
+<form>
+  Select a file: <input type="file" name="myFile" id="fileInput"><br><br>
+<button onclick="file_size()">upload</button>
 </form>
 
 </body>
