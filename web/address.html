@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+</head>
+<body>
+<div class="present">
+<h2>Present Address</h2>
+H.NO:<input type="number" id="h_no" required><br>
+STREET:<input type="text" id="street" required><br>
+LAND MARK:<input type="text" id="land_mark" required><br>
+STATE:<br>
+PIN:<input type="number" id="pin" required><br>
+</div>
+<div class="permanent">
+
+<h2>Permanent Address</h2>
+H.NO:<input type="number" id="h_no1" required><br>
+STREET:<input type="text" id="street1" required><br>
+LAND MARK:<input type="text" id="land_mark1" required><br>
+STATE:<br>
+PIN:<input type="number" id="pin1" required><br>
+</div>
+
+<input type="checkbox" name="vehicle1" value="Bike" onchange="fun1()">Same as present address
+<script>
+function fun1()
+{
+document.getElementById('pin1').value=document.getElementById('pin').value;
+document.getElementById('h_no1').value=document.getElementById('h_no').value;
+document.getElementById('street1').value=document.getElementById('street').value;
+document.getElementById('land_mark1').value=document.getElementById('land_mark').value;
+}
+</script>
+</body>
+</html>
