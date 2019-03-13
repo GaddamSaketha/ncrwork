@@ -11,17 +11,19 @@ $(document).ready(function(){
  $("#state1").val($("#state").val());
   });
 
-  $("#hide").click(function(){
-    $(".present").hide();
+  $("#hide_show").click(function(){
+    $(".present").toggle();
+   if( $("#hide_show").val()=="show")
+       $("#hide_show").val("hide");
+    else
+       $("#hide_show").val("show");
   });
-  $("#show").click(function(){
-    $(".present").show();
-  });
-  $("#hide1").click(function(){
-    $(".permanent").hide();
-  });
-  $("#show1").click(function(){
-    $(".permanent").show();
+$("#hide_show1").click(function(){
+    $(".permanent").toggle();
+if( $("#hide_show1").val()=="show")
+       $("#hide_show1").val("hide");
+else
+       $("#hide_show1").val("show");
   });
 }); 
 </script>
@@ -75,8 +77,8 @@ STATE:<select name="stateslist" id="state">
 </select><br>
 PIN:<input type="number" id="pin" required><br>
 </div>
-<button id="hide">Hide</button>
-<button id="show">Show</button>
+<input type="button" value="hide" id="hide_show">
+
 <div class="permanent">
 
 <h2>Permanent Address</h2>
@@ -126,8 +128,8 @@ STATE:<select name="stateslist" id="state1">
 </select><br>
 PIN:<input type="number" id="pin1" required><br>
 </div>
-<button id="hide1">Hide</button>
-<button id="show1">Show</button>
+<input type="button" value="hide" id="hide_show1">
+
 <input type="checkbox" id="check_box">Same as present address
 
 </body>
