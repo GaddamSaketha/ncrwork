@@ -1,0 +1,2 @@
+use sampp;
+select deptno,dname from dept order by dname;
