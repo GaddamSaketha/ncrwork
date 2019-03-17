@@ -7,6 +7,7 @@ class strings
 	char* string_pointer;
 	int length;
 public:
+	//constructors
 	strings()
 	{
 		string_pointer = NULL;
@@ -24,11 +25,13 @@ public:
 		string_pointer = (char*)malloc(sizeof(char)*(length + 1));
 		strcpy(string_pointer, string1.string_pointer);
 	}
+	//destructor
 	~strings()
 	{
 		if (string_pointer != NULL)
 			free(string_pointer);
 	}
+	//overloading []
 	char& operator[](int index)
 	{
 		if (index > length)
@@ -36,10 +39,13 @@ public:
 		else
 			return string_pointer[index];
 	}
+	//overloading -> operator
 	strings* operator->()
 	{
 		return this;
 	}
+	//overloading = operator
+	
 	strings operator=(strings temp)
 	{
 		length = temp.length;
@@ -49,6 +55,7 @@ public:
 		strcpy(string_pointer, temp.string_pointer);
 		return(*this);
 	}
+	//overloading + operator
 	strings operator+(strings string1)
 	{
 		strings temp;
@@ -73,12 +80,14 @@ public:
 	friend ostream& operator<<(ostream& cout, strings s);
 	friend istream& operator >> (istream& cin, strings &s);
 };
+//overloading << operator
 ostream& operator<<(ostream& cout, strings s)
 {
 	cout << s.string_pointer;
 
 	return cout;
 }
+//overloading >> operator
 istream& operator >> (istream& cin, strings &s)
 {
 	cin >> s.string_pointer;
