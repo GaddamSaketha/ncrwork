@@ -2,10 +2,11 @@
 #include<iostream>
 #include<string.h>
 using namespace std;
+//class to create complex numbers
 class complex
 {
-	int real;
-	int img;
+	double real;
+	double img;
 	
 public:
 	complex()
@@ -13,12 +14,12 @@ public:
 		real = 0;
 		img = 0;
 	}
-	complex(int val)
+	complex(double val)
 	{
 		real = val;
 		img = val;
 	}
-	complex(int val1,int val2)
+	complex(double val1, double val2)
 	{
 		real = val1;
 		img = val2;
@@ -31,6 +32,7 @@ public:
 	friend complex add(const complex &c1, const complex &c2);
 	friend complex mul(const complex &c1, const complex &c2);
 };
+//function to add two complex numbers
 complex add(const complex &c1, const complex &c2)
 {
 	complex temp;
@@ -38,6 +40,7 @@ complex add(const complex &c1, const complex &c2)
 	temp.img = c1.img + c2.img;
 	return temp;
 }
+//function to multiply two complex numbers
 complex mul(const complex &c1, const complex &c2)
 {
 	complex temp;
@@ -47,12 +50,27 @@ complex mul(const complex &c1, const complex &c2)
 }
 int main()
 {
-	complex c1(4), c2(3, 6), c3,c4;
-	c3=add(c1, c2);
-	c4=mul(c1, c2);
+	double real, img;
+	complex complex_number1(4), complex_number2(3, 6), complex_number3,complex_number4;
+	complex_number1.display();
+	complex_number2.display();
+	complex_number3.display();
+	cout << "enter real and img values of first complex number" << endl;
+	cin >> real;
+	cin >> img;
+	complex complex_number5(real, img);
+	cout << "enter real and img values of second complex number" << endl;
+	cin >> real;
+	cin >> img;
+	complex complex_number6(real, img);
+	complex_number3=add(complex_number5, complex_number6);
+	complex_number4=mul(complex_number5, complex_number6);
 	cout << "sum of nos: ";
-	c3.display();
+	complex_number3.display();
 	cout << "product of no: ";
-	c4.display();
+	complex_number4.display();
+
+
+	
 	return 0;
 }

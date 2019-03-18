@@ -4,91 +4,112 @@
 using namespace std;
 class strings
 {
-	char* sptr;
-	int len;
+	char* string_pointer;
+	int length;
 public:
+	//constructors
 	strings()
 	{
-		sptr = NULL;
-		len = 0;
+		string_pointer = NULL;
+		length = 0;
 	}
-	strings(const char* s)
+	strings(const char* string1)
 	{
-		len = strlen(s);
-		sptr = (char*)malloc(sizeof(char)*(len + 1));
-		strcpy(sptr, s);
+		length = strlen(string1);
+		string_pointer = (char*)malloc(sizeof(char)*(length + 1));
+		strcpy(string_pointer, string1);
 	}
-	strings(const strings &temp)
+	strings(const strings &string1)
 	{
-		len = temp.len;
-		sptr = (char*)malloc(sizeof(char)*(len + 1));
-		strcpy(sptr, temp.sptr);
+		length = string1.length;
+		string_pointer = (char*)malloc(sizeof(char)*(length + 1));
+		strcpy(string_pointer, string1.string_pointer);
 	}
+	//destructor
 	~strings()
 	{
-		if (sptr != NULL)
-			free(sptr);
+		if (string_pointer != NULL)
+			free(string_pointer);
 	}
-	char& operator[](int n)
+	//overloading []
+	char& operator[](int index)
 	{
-		return sptr[n];
+		if (index > length)
+			cout << "out of bound";
+		else
+			return string_pointer[index];
 	}
+	//overloading -> operator
 	strings* operator->()
 	{
 		return this;
 	}
+	//overloading = operator
+	
 	strings operator=(strings temp)
 	{
-		len = temp.len;
-		if (sptr != NULL)
-			free(sptr);
-		sptr = (char*)malloc(sizeof(char)*(len + 1));
-		strcpy(sptr, temp.sptr);
+		length = temp.length;
+		if (string_pointer != NULL)
+			free(string_pointer);
+		string_pointer = (char*)malloc(sizeof(char)*(length + 1));
+		strcpy(string_pointer, temp.string_pointer);
 		return(*this);
 	}
-	strings operator+(strings s)
+	//overloading + operator
+	strings operator+(strings string1)
 	{
 		strings temp;
-		temp.len = len + s.len;
-		temp.sptr = (char*)realloc(sptr, (len + 1));
+		temp.length = length + string1.length;
+		temp.string_pointer = (char*)realloc(string_pointer, (temp.length + 1));
 		int i = 0, j = 0;
-		while (*(sptr + i) != '\0')
+		while (*(string_pointer + i) != '\0')
 		{
-			*(temp.sptr + i) = *(sptr + i);
+			*(temp.string_pointer + i) = *(string_pointer + i);
 			i++;
 		}
-		while (*(sptr + j) != '\0')
+		while (*(string_pointer + j) != '\0')
 		{
-			*(temp.sptr + i) = *(sptr + j);
+			*(temp.string_pointer + i) = *(string_pointer + j);
 			j++;
 			i++;
 		}
-		*(temp.sptr + i) = '\0';
+		*(temp.string_pointer + i) = '\0';
 		return temp;
 
 	}
 	friend ostream& operator<<(ostream& cout, strings s);
 	friend istream& operator >> (istream& cin, strings &s);
 };
+//overloading << operator
 ostream& operator<<(ostream& cout, strings s)
 {
-	cout << s.sptr;
+	cout << s.string_pointer;
 
 	return cout;
 }
+//overloading >> operator
 istream& operator >> (istream& cin, strings &s)
 {
-	cin >> s.sptr;
+	cin >> s.string_pointer;
 	return cin;
 }
 
 int main()
 {
-	strings s1("hello"), s2(s1), s3;
+	char input_string[50];
+	cout << "enter string" << endl;
+	cin >> input_string;
+	strings s1(input_string), s2(s1), s3;
+	//strings s1("hello"), s2(s1), s3;
 	s3 = s1 + s2;
 	cout << s3<<endl;
-	cout << s1[3]<<endl;
+	int index;
+	cout << "enter index" << endl;
+	cin >> index;
+	cout << "value is : "<<s1[index]<<endl;
+	cout << "enter string"<<endl;
 	cin >> s3;
+	cout << "entered string is : ";
 	cout << s3;
 	return 0;
 }
